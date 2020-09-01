@@ -29,9 +29,7 @@ def pempriv(n, e, d, p, q, dP, dQ, qInv):
 def main():
     
     print("rsa.py pubkeypeminput privkeypemoutput secreto\n");
-    
-    # primero lee y decodifica el publickey.pem
-    
+       
     finput = sys.argv[1]
     foutput= sys.argv[2]
     secreto= sys.argv[3]
@@ -40,7 +38,8 @@ def main():
     print("output priv key file:   " + foutput)
     print("secreto a desencriptar: " + secreto+"\n")
     
-    
+    # primero lee y decodifica el publickey.pem
+        
     print("Lectura de la public key...")
     
     pem = open(finput).read()
@@ -52,7 +51,7 @@ def main():
     print("modulus es "+str(modulus))
     print("exponente es "+str(e))
     
-    # primero encuentra los primos para el modulus
+    # segundo encuentra los primos para el modulus
     
     print("Factorización en primos del modulus...https://www.numberempire.com/numberfactorizer.php")
     
@@ -77,7 +76,7 @@ def main():
     
     print("Los primos son "+str(p)+" "+str(q))
     
-    # calculando el resto de valores
+    # tercero calculando el resto de valores
     
     print("Calculando d,exp1,exp2,coeff...")
     
@@ -96,7 +95,7 @@ def main():
     
     print("Ahora el texto del archivo defasn1\n");
     
-# generate def.asn1
+    # cuarto generate def.asn1
 
     defasn1 = "asn1=SEQUENCE:private_key\n[private_key]\nversion=INTEGER:0\n\n"
     defasn1+= "n=INTEGER:"+hex(modulus)[:-1]+"\n"
@@ -120,6 +119,8 @@ def main():
     print("1- openssl asn1parse -genconf def.asn1 -out privkey.der -noout");
     print("2- openssl rsa -inform DER -outform PEM -in privkey.der -out privkey.pem");
 
+    # quinto genera directamente privkey
+        
     print("\n o generar privkey.pem directamente con python\n");
     
     privkeypem = pempriv(modulus, e, d, p, q, exp1, exp2, coeff);
@@ -131,7 +132,9 @@ def main():
     filepriv.close()     
     
     print(foutput+" generado");
-    
+
+    # sexto desencripta directamente
+        
     print("\nTambién se puede usar directamente python para desencriptar la cadena\n\n")
     
     rsa_key = RSA.importKey(privkeypem)
