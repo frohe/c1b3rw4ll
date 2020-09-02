@@ -10,6 +10,14 @@ Especificar publickeyinput privkeyoutput secreto
 
 secreto es el archivo a desencriptar en base64
 
+*Nota
+
+La factorización puede realizarse en el propio ordenador
+
+- para Linux se puede usar cado-nfs, instrucciones aquí https://mersenneforum.org/showthread.php?t=23089
+- para Windows tenemos ggnfs y msieve https://download.mersenne.ca/GGNFS y https://download.mersenne.ca/msieve
+
+En ambos casos factoriza números de 60 dígitos en segundos con un hardware decente. 
 """
 
 import requests, BeautifulSoup
