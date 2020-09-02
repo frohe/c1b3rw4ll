@@ -8,11 +8,14 @@ Se escribe automáticamente privkey.pem
 
 Especificar publickeyinput privkeyoutput secreto
 
+secreto es el archivo a desencriptar en base64
+
 """
 
 import requests, BeautifulSoup
 from sympy import mod_inverse
 from Crypto.PublicKey import RSA
+from Crypto.Cipher import PKCS1_v1_5
 import pyasn1.codec.der.encoder
 import pyasn1.type.univ
 import base64
@@ -32,7 +35,7 @@ def main():
        
     finput = sys.argv[1]
     foutput= sys.argv[2]
-    secreto= sys.argv[3]
+    secreto= open(sys.argv[3]).read() 
     
     print("input  public key file: " + finput)
     print("output priv key file:   " + foutput)
@@ -138,10 +141,14 @@ def main():
     print("\nTambién se puede usar directamente python para desencriptar la cadena\n\n")
     
     rsa_key = RSA.importKey(privkeypem)
+    cipher  = PKCS1_v1_5.new(rsa_key)
     
     secreto = base64.decodestring(secreto)
-    phn     = rsa_key.decrypt(secreto)
+    phn     = cipher.decrypt(secreto, "Error while decrypting")
     print(phn)
     
 if __name__ == "__main__":
     main()
+     
+     
+
