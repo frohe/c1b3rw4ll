@@ -17,6 +17,8 @@ La factorización puede realizarse en el propio ordenador
 - para Linux se puede usar cado-nfs, instrucciones aquí https://mersenneforum.org/showthread.php?t=23089
 - para Windows tenemos ggnfs y msieve https://download.mersenne.ca/GGNFS y https://download.mersenne.ca/msieve
 
+- versiones de msieve cuda para windows https://www.mersenneforum.org/showthread.php?t=20796&page=6
+
 En ambos casos factoriza números de 60 dígitos en segundos con un hardware decente. 
 """
 
