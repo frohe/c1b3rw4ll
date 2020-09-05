@@ -16,6 +16,7 @@ La factorización puede realizarse en el propio ordenador
 
 - para Linux se puede usar cado-nfs, instrucciones aquí https://mersenneforum.org/showthread.php?t=23089
 - para Windows tenemos http://gladman.me.uk/computing/factmsieve.py + ggnfs y msieve https://download.mersenne.ca/GGNFS y https://download.mersenne.ca/msieve
+- msieve jasonp_sf https://sourceforge.net/projects/msieve/files/msieve/
 
 - versiones de msieve cuda para windows https://www.mersenneforum.org/showthread.php?t=20796&page=6
 
